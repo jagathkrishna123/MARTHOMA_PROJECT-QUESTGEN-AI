@@ -1,0 +1,311 @@
+[2026-02-11T09:32:11.348Z] API ERROR:
+getaddrinfo ENOTFOUND openrouter.ai
+RESPONSE DATA:
+{}
+----------------
+[2026-02-11T11:14:53.208Z] API ERROR:
+Request failed with status code 408
+RESPONSE DATA:
+{
+  "error": {
+    "message": "timeout",
+    "code": 408
+  }
+}
+----------------
+[2026-02-15T16:08:02.078Z] JSON PARSE ERROR:
+Expected ',' or ']' after array element in JSON at position 4706 (line 108 column 16)
+CONTENT:
+{
+  "header": {
+    "institutionName": "St. Joseph's College of Engineering",
+    "subject": "Data Structures",
+    "grade": "2026",
+    "timeAllowed": "3 hrs",
+    "totalMarks": 29,
+    "examTitle": "Semester End Examinations"
+  },
+  "sections": [
+    {
+      "title": "Section 1: Multiple Choice Questions (MCQ)",
+      "questions": [
+        {
+          "id": "q1",
+          "text": "What is React?",
+          "marks": 1,
+          "bloomsLevel": "remembering",
+          "options": ["A) A JavaScript library for building user interfaces", "B) A backend framework for server-side rendering", "C) A database management system", "D) A CSS preprocessor"]
+        },
+        {
+          "id": "q2",
+          "text": "What is JSX in React?",
+          "marks": 1,
+          "bloomsLevel": "remembering",
+          "options": ["A) A syntax extension for JavaScript that resembles HTML", "B) A CSS-in-JS library", "C) A state management tool", "D) A routing library"]
+        },
+        {
+          "id": "q3",
+          "text": "What is the primary purpose of the Virtual DOM in React?",
+          "marks": 1,
+          "bloomsLevel": "remembering",
+          "options": ["A) To improve application performance by minimizing DOM manipulations", "B) To handle API requests", "C) To manage component state", "D) To enable server-side rendering"]
+        },
+        {
+          "id": "q4",
+          "text": "Which hook is used to manage state in functional components?",
+          "marks": 1,
+          "bloomsLevel": "remembering",
+          "options": ["A) useEffect", "B) useState", "C) useRef", "D) useContext"]
+        },
+        {
+          "id": "q5",
+          "text": "What is a functional component in React?",
+          "marks": 1,
+          "bloomsLevel": "remembering",
+          "options": ["A) A JavaScript function that returns JSX", "B) A class-based component", "C) A state management utility", "D) A routing configuration"]
+        }
+      ]
+    },
+    {
+      "title": "Section 2: True/False Questions",
+      "questions": [
+        {
+          "id": "q6",
+          "text": "React uses a Virtual DOM to improve application performance.",
+          "marks": 1,
+          "bloomsLevel": "understanding",
+          "answer": "True"
+        },
+        {
+          "id": "q7",
+          "text": "Props are used to pass data from child components to parent components.",
+          "marks": 1,
+          "bloomsLevel": "understanding",
+          "answer": "False"
+        },
+        {
+          "id": "q8",
+          "text": "The useEffect hook runs after every render by default.",
+          "marks": 1,
+          "bloomsLevel": "understanding",
+          "answer": "True"
+        }
+      ]
+    },
+    {
+      "title": "Section 3: Short Answer Questions",
+      "questions": [
+        {
+          "id": "q9",
+          "text": "Explain the purpose of the useEffect hook in React and provide an example of its usage.",
+          "marks": 6,
+          "bloomsLevel": "creating",
+          "solution": "The useEffect hook is used to handle side effects in functional components, such as data fetching, subscriptions, or manual DOM manipulations. Example: `useEffect(() => { fetchData(); }, [dependency])` ensures the effect runs only when the specified dependencies change."
+        },
+        {
+          "id": "q10",
+          "text": "Design a component structure for a simple task manager using React components and props.",
+          "marks": 6,
+          "bloomsLevel": "creating",
+          "solution": "A task manager can be structured with a `TaskList` component (displays tasks), `TaskItem` (renders individual tasks), and `AddTaskForm` (handles form submission). Props like `tasks` and `onAddTask` enable data flow between components."
+        }
+      ]
+    },
+    {
+      "title": "Section 4: Long Answer Question",
+      "questions": [
+        {
+          "id": "q11",
+          "text": "Design a React application for a student dashboard that includes a to-do list, a form to add new tasks, and a display of completed tasks. Explain how state management, API integration, and conditional rendering are utilized in this application.",
+          "marks": 10,
+          "bloomsLevel": "creating",
+          "solution": "The application would use functional components like `StudentDashboard`, `TaskList`, and `AddTaskForm`. State management via `useState` tracks tasks and completion status. The `useEffect` hook fetches tasks from an API (e.g., `/api/tasks`). Conditional rendering via `&&` or ternary operators displays completed tasks. Forms use controlled components with `onChange` and `onSubmit` to update state and send data to the API."
+        }
+      ]
+    },
+    "answerKey": [
+      {
+        "questionId": "q1",
+        "answer": "A",
+        "solution": "React is a JavaScript library for building user interfaces, not a framework or database."
+      },
+      {
+        "questionId": "q2",
+        "answer": "A",
+        "solution": "JSX is a syntax extension for JavaScript that allows writing HTML-like code in React components."
+      },
+      {
+        "questionId": "q3",
+        "answer": "A",
+        "solution": "The Virtual DOM improves performance by minimizing direct DOM manipulations through a lightweight copy of the real DOM."
+      },
+      {
+        "questionId": "q4",
+        "answer": "B",
+        "solution": "The useState hook is used to manage state in functional components, enabling dynamic updates."
+      },
+      {
+        "questionId": "q5",
+        "answer": "A",
+        "solution": "Functional components are JavaScript functions that return JSX, replacing class-based components in modern React."
+      },
+      {
+        "questionId": "q6",
+        "answer": "True",
+        "solution": "React's Virtual DOM optimizes updates by batching changes and reducing reflows."
+      },
+      {
+        "questionId": "q7",
+        "answer": "False",
+        "solution": "Props flow from parent to child components, not the reverse."
+      },
+      {
+        "questionId": "q8",
+        "answer": "True",
+        "solution": "The useEffect hook runs after every render unless dependencies are specified."
+      },
+      {
+        "questionId": "q9",
+        "answer": "A",
+        "solution": "useEffect handles side effects like data fetching or subscriptions."
+      },
+      {
+        "questionId": "q10",
+        "answer": "A",
+        "solution": "A task manager structure with `TaskList`, `TaskItem`, and `AddTaskForm` components demonstrates component reuse and prop-based data flow."
+      },
+      {
+        "questionId": "q11",
+        "answer": "A",
+        "solution": "The solution integrates state management, API calls, and conditional rendering as described."
+      }
+    ]
+  }
+}
+----------------
+[2026-02-15T16:23:56.226Z] JSON PARSE ERROR:
+Expected ',' or ']' after array element in JSON at position 1538 (line 40 column 19)
+CONTENT:
+{
+  "header": {
+    "institutionName": "St. Joseph's College of Engineering",
+    "subject": "Data Structures",
+    "grade": "2026",
+    "timeAllowed": "3 hours",
+    "totalMarks": 28,
+    "examTitle": "Data Structures Exam"
+  },
+  "sections": [
+    {
+      "title": "Section 1: Multiple Choice Questions",
+      "questions": [
+        {
+          "id": "Q1",
+          "text": "Which data structure is best suited for frequent insertions and deletions at both ends?",
+          "marks": 1,
+          "options": ["Array", "Linked List", "Stack", "Queue"],
+          "answer": "Linked List"
+        },
+        {
+          "id": "Q2",
+          "text": "In a graph, which traversal method explores all vertices reachable from a given starting vertex?",
+          "marks": 1,
+          "options": ["Depth First Search", "Breadth First Search", "Dijkstra's Algorithm", "Kruskal's Algorithm"],
+          "answer": "Breadth First Search"
+        },
+        {
+          "id": "Q3",
+          "text": "Which of the following is a primary advantage of using a trie over a hash table for string operations?",
+          "marks": 1,
+          "options": ["Constant time lookups", "Space efficiency", "Order preservation", "Hash collision resolution"],
+          "answer": "Order preservation"
+        },
+        {
+          "id": "Q4",
+          "text": "What is the time complexity of inserting an element into a balanced binary search tree?",
+          "marks": 1,
+          "options": ["O(1)", "O(log n)", "O(n)", "O(n log n)]",
+          "answer": "O(log n)"
+        }
+      ]
+    },
+    {
+      "title": "Section 2: Objective Questions",
+      "questions": [
+        {
+          "id": "Q5",
+          "text": "Explain the difference between a stack and a queue in terms of access patterns.",
+          "marks": 2,
+          "type": "short answer"
+        },
+        {
+          "id": "Q6",
+          "text": "Compare and contrast the use of recursion and iteration in solving the Tower of Hanoi problem.",
+          "marks": 2,
+          "type": "short answer"
+        },
+        {
+          "id": "Q7",
+          "text": "Design a simple counter application that updates the displayed value based on user input. Justify your design choices.",
+          "marks": 3,
+          "type": "long answer"
+        }
+      ]
+    },
+    {
+      "title": "Section 3: Short Answer Questions",
+      "questions": [
+        {
+          "id": "Q8",
+          "text": "Illustrate how the use of the useState hook simplifies state management in React components.",
+          "marks": 6,
+          "type": "short answer"
+        },
+        {
+          "id": "Q9",
+          "text": "Differentiate between synchronous and asynchronous data fetching in React. Provide a real-world example for each.",
+          "marks": 6,
+          "type": "short answer"
+        },
+        {
+          "id": "Q10",
+          "text": "Design a basic form with validation using controlled components. Explain the role of the 'onChange' event handler.",
+          "marks": 6,
+          "type": "short answer"
+        }
+      ]
+    },
+    {
+      "title": "Section 4: Long Answer Questions",
+      "questions": [
+        {
+          "id": "Q11",
+          "text": "Analyze the impact of using functional components with the useEffect hook for data fetching in a React application.",
+          "marks": 10,
+          "type": "long answer"
+        },
+        {
+          "id": "Q12",
+          "text": "Compare the performance characteristics of React's virtual DOM with native DOM manipulation.",
+          "marks": 10,
+          "type": "long answer"
+        }
+      ]
+    }
+  ],
+  "answerKey": {
+    "q1": "Linked List",
+    "q2": "Breadth First Search",
+    "q3": "Order preservation",
+    "q4": "O(log n)",
+    "q5": "Explain access patterns",
+    "q6": "Recursion vs Iteration",
+    "q7": "Counter app with state management",
+    "q8": "Simplifies state updates",
+    "q9": "Synchronous vs asynchronous",
+    "q10": "Controlled components & validation",
+    "q11": "Impact on rendering and efficiency",
+    "q12": "Virtual DOM vs Direct DOM"
+  }
+}
+----------------
