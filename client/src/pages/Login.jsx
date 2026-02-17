@@ -51,6 +51,10 @@ const Login = () => {
         } else {
             const user = users.find(u => u.email === formData.email && u.password === formData.password)
             if (user) {
+                if (user.isBlocked) {
+                    alert('Your account has been blocked. Please contact admin.')
+                    return
+                }
                 localStorage.setItem('currentUser', JSON.stringify(user))
                 refreshUser()
                 navigate('/app')

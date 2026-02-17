@@ -211,7 +211,8 @@ const UploadPdfNotes = () => {
           return {
             ...q,
             answer: answerEntry ? (answerEntry.solution || answerEntry.answer) : (q.answer || "Answer not available"),
-            correctAnswer: answerEntry ? answerEntry.answer : (q.correctAnswer || "")
+            correctAnswer: answerEntry ? answerEntry.answer : (q.correctAnswer || ""),
+            bloomsLevel: q.bloomsLevel || ""
           };
         });
 
@@ -584,6 +585,16 @@ const UploadPdfNotes = () => {
           setHelvetica("bold", 10);
           pdf.setTextColor(20, 20, 20);
           pdf.text(`${globalQ}.`, ML, y);
+
+          // Bloom's Level Badge on the same line as Question Number
+          if (question.bloomsLevel) {
+            const blevel = BLOOMS_LEVELS[question.bloomsLevel.toLowerCase()] || question.bloomsLevel;
+            setHelvetica("italic", 7.5); // Slightly smaller font
+            pdf.setTextColor(120, 120, 120); // Slightly lighter
+            pdf.text(`[Bloom's: ${blevel}]`, RIGHT, y, { align: "right" });
+          }
+
+          y += 5.5; // Move to next line for the answer text to prevent overlap
 
           let ansText = "";
           if (section.questionType === "mcq") {
@@ -1048,6 +1059,11 @@ const UploadPdfNotes = () => {
                           <span className="text-xs text-gray-500 ml-2 font-normal border px-2 py-0.5 rounded">
                             {section.marksPerQuestion} marks
                           </span>
+                          {question.bloomsLevel && (
+                            <span className="text-xs bg-blue-50 text-blue-600 ml-2 px-2 py-0.5 rounded border border-blue-100 uppercase font-bold">
+                              {BLOOMS_LEVELS[question.bloomsLevel.toLowerCase()] || question.bloomsLevel}
+                            </span>
+                          )}
                         </div>
 
                         {/* MCQ Options */}

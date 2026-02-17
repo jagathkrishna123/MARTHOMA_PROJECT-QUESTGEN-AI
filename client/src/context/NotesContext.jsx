@@ -9,6 +9,17 @@ export const NotesProvider = ({ children }) => {
 
   const refreshUser = () => {
     const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    if (currentUser && currentUser.role !== 'admin') {
+      const allUsers = JSON.parse(localStorage.getItem('users') || '[]');
+      const latestUserData = allUsers.find(u => u.id === currentUser.id);
+
+      if (!latestUserData || latestUserData.isBlocked) {
+        localStorage.removeItem('currentUser');
+        setUserId(null);
+        window.location.href = '/login'; // Force logout to login page
+        return;
+      }
+    }
     setUserId(currentUser?.id || null);
   };
 

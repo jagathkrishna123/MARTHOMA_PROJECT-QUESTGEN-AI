@@ -241,7 +241,8 @@ OUTPUT FORMAT (STRICT JSON):
       "question": "string",
       "options": ["Option A", "Option B", "Option C", "Option D"], // ONLY for mcq
       "answer": "string", // Solution text (30-60 words for short, 120-180 for long, 1-5 words/TF for objective)
-      "correctAnswer": "A" // ONLY for mcq, must be A, B, C, or D
+      "correctAnswer": "A", // ONLY for mcq, must be A, B, C, or D
+      "bloomsLevel": "string" // e.g. remembering, understanding, etc.
     }
   ]
 }
@@ -346,7 +347,8 @@ Return JSON only.
       question: q.question || "",
       options: q.options || [],
       answer: q.answer || "Answer not available",
-      correctAnswer: q.correctAnswer || ""
+      correctAnswer: q.correctAnswer || "",
+      bloomsLevel: q.bloomsLevel || ""
     }));
 
     res.json({ questions: cleaned });
@@ -374,25 +376,29 @@ function generateMockQuestions(questionType, numQuestions, topics) {
         options: ["Option A", "Option B", "Option C", "Option D"],
         correctAnswer: "A",
         answer: "A",
-        type: 'mcq'
+        type: 'mcq',
+        bloomsLevel: 'remembering'
       });
     } else if (questionType === 'objective') {
       questions.push({
         question: `True or False: ${topic} is an important concept.`,
         answer: "True",
-        type: 'objective'
+        type: 'objective',
+        bloomsLevel: 'remembering'
       });
     } else if (questionType === 'short') {
       questions.push({
         question: `Explain ${topic} in detail.`,
         answer: `This is a short answer explaining ${topic}. It covers the main points and provides a concise explanation of the subject matter, ensuring that all key aspects are addressed within the thirty to sixty word limit specified for this type of question.`,
-        type: 'short'
+        type: 'short',
+        bloomsLevel: 'understanding'
       });
     } else if (questionType === 'long') {
       questions.push({
         question: `Discuss ${topic} in detail, covering its importance and applications.`,
         answer: `This is a detailed explanation of ${topic}. It covers various aspects including definitions, importance, applications, and related concepts. The answer provides comprehensive information suitable for long answer questions. We ensure that the length of this response stays within the one hundred twenty to one hundred eighty word range to provide a thorough understanding of the topic for any academic examination or study purposes. This level of detail helps students grasp the nuances and broader implications of the concept in a real-world scenario.`,
-        type: 'long'
+        type: 'long',
+        bloomsLevel: 'analyzing'
       });
     }
   }

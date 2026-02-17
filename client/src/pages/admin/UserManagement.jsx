@@ -18,10 +18,10 @@ const UserManagement = () => {
       return {
         ...user,
         notesCount: userNotes + userPapers,
-        joinDate: new Date(user.id).toLocaleDateString(), // Assuming id is timestamp
+        joinDate: new Date(user.id).toLocaleDateString(), // id is timestamp
         status: user.isBlocked ? 'Blocked' : 'Active'
       };
-    });
+    }).sort((a, b) => b.id - a.id);
 
     setUsers(enrichedUsers);
   }, []);
@@ -131,8 +131,8 @@ const UserManagement = () => {
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
                       <span className={`px-2 py-1 text-xs font-medium rounded-full ${user.status === 'Active'
-                          ? 'bg-green-100 text-green-800'
-                          : 'bg-red-100 text-red-800'
+                        ? 'bg-green-100 text-green-800'
+                        : 'bg-red-100 text-red-800'
                         }`}>
                         {user.status}
                       </span>
@@ -148,8 +148,8 @@ const UserManagement = () => {
                         <button
                           onClick={() => toggleBlockUser(user.id)}
                           className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md transition-colors ${user.status === 'Active'
-                              ? 'text-red-600 bg-red-50 hover:bg-red-100 border border-red-200'
-                              : 'text-green-600 bg-green-50 hover:bg-green-100 border border-green-200'
+                            ? 'text-red-600 bg-red-50 hover:bg-red-100 border border-red-200'
+                            : 'text-green-600 bg-green-50 hover:bg-green-100 border border-green-200'
                             }`}
                         >
                           {user.status === 'Active' ? (

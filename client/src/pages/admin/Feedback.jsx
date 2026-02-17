@@ -10,12 +10,14 @@ const Feedback = () => {
     return saved ? JSON.parse(saved) : [];
   });
 
-  const filteredFeedbacks = feedbacks.filter(feedback => {
-    const matchesSearch = feedback.user.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      feedback.message.toLowerCase().includes(searchTerm.toLowerCase());
-    const matchesFilter = filter === 'all' || feedback.status === filter;
-    return matchesSearch && matchesFilter;
-  });
+  const filteredFeedbacks = feedbacks
+    .filter(feedback => {
+      const matchesSearch = feedback.user.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        feedback.message.toLowerCase().includes(searchTerm.toLowerCase());
+      const matchesFilter = filter === 'all' || feedback.status === filter;
+      return matchesSearch && matchesFilter;
+    })
+    .sort((a, b) => b.id - a.id);
 
   const renderStars = (rating) => {
     return [...Array(5)].map((_, i) => (

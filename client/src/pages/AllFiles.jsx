@@ -382,6 +382,16 @@ const AllFiles = () => {
           pdf.setTextColor(20, 20, 20);
           pdf.text(`${globalQ}.`, ML, y);
 
+          // Bloom's Level Badge on the same line as Question Number
+          if (question.bloomsLevel) {
+            const blevel = BLOOMS_LEVELS[question.bloomsLevel.toLowerCase()] || question.bloomsLevel;
+            setHelvetica("italic", 7.5); // Slightly smaller font
+            pdf.setTextColor(120, 120, 120); // Slightly lighter
+            pdf.text(`[Bloom's: ${blevel}]`, RIGHT, y, { align: "right" });
+          }
+
+          y += 5.5; // Move to next line for the answer text to prevent overlap
+
           let ansText = "";
           if (section.questionType === "mcq") {
             ansText = `[Ans: Option ${question.correctAnswer || "N/A"}]  ${question.answer || question.solution || ""}`;
@@ -626,7 +636,14 @@ const AllFiles = () => {
                               className="w-full p-2 border border-gray-300 rounded focus:ring-1 focus:ring-blue-500 outline-none bg-white font-medium"
                             />
                           ) : (
-                            <div className="font-medium text-gray-800">{question.question || question.text}</div>
+                            <div className="font-medium text-gray-800">
+                              {question.question || question.text}
+                              {question.bloomsLevel && (
+                                <span className="text-[10px] bg-blue-50 text-blue-600 ml-2 px-1.5 py-0.5 rounded border border-blue-100 uppercase font-bold align-middle">
+                                  {BLOOMS_LEVELS[question.bloomsLevel.toLowerCase()] || question.bloomsLevel}
+                                </span>
+                              )}
+                            </div>
                           )}
 
                           {/* Options for MCQ */}
