@@ -229,8 +229,8 @@ const AllFiles = () => {
     setHelvetica("normal", 10);
     pdf.setTextColor(40, 40, 40);
 
-    const leftMeta = headerDetails.subjectName ? `Subject: ${headerDetails.subjectName}` : "";
     const centerMeta = headerDetails.duration ? `Duration: ${headerDetails.duration}` : "";
+    const leftMeta = headerDetails.subjectName ? `Subject: ${headerDetails.subjectName}` : "";
     const rightMeta = `Max. Marks: ${totalMarks}`;
 
     if (leftMeta) pdf.text(leftMeta, ML, y);

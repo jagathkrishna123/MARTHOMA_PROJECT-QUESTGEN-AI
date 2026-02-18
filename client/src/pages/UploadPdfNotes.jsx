@@ -42,7 +42,7 @@ const UploadPdfNotes = () => {
   const [topics, setTopics] = useState([]);
   const [paperStructure, setPaperStructure] = useState([]);
   const [generatedQuestions, setGeneratedQuestions] = useState([]);
-  const [outputType, setOutputType] = useState("question-paper");
+  const [outputType, setOutputType] = useState("");
   const [loadingPdf, setLoadingPdf] = useState(false);
   const [loadingAI, setLoadingAI] = useState(false);
 
@@ -169,6 +169,11 @@ const UploadPdfNotes = () => {
   // 4️⃣ Generate Questions with AI
   // ---------------------------
   const generateQuestions = async () => {
+
+    if (!outputType) {
+      alert("Please select an output format.");
+      return;
+    }
     if (!topics.length || !paperStructure.length) return;
 
     setLoadingAI(true);
@@ -398,8 +403,9 @@ const UploadPdfNotes = () => {
     setHelvetica("normal", 10);
     pdf.setTextColor(40, 40, 40);
 
-    const leftMeta = headerDetails.subjectName ? `Subject: ${headerDetails.subjectName}` : "";
-    const centerMeta = headerDetails.duration ? `Duration: ${headerDetails.duration}` : "";
+
+    const leftMeta = headerDetails.duration ? `Duration: ${headerDetails.duration}` : "";
+    const centerMeta = headerDetails.subjectName ? `Subject: ${headerDetails.subjectName}` : "";
     const rightMeta = `Max. Marks: ${totalMarks}`;
 
     if (leftMeta) pdf.text(leftMeta, ML, y);
@@ -979,7 +985,7 @@ const UploadPdfNotes = () => {
       )}
 
       {/* Generate Button */}
-      {topics.length > 0 && paperStructure.length > 0 && (
+      {topics.length > 0 && paperStructure.length > 0 && outputType && (
         <div className="text-center">
           <button
             onClick={generateQuestions}
